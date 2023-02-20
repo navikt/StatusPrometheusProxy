@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>no.nav</groupId>
-	<artifactId>StatusPrometheusProxy</artifactId>
+	<artifactId>prom-status-proxy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>StatusPrometheusProxy</name>
+	<name>prom-status-proxy</name>
 	<description>Proxy for handeling prometheus alerts to statusplatformen</description>
 	<properties>
 		<java.version>17</java.version>
