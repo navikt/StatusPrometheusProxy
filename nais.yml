@@ -1,0 +1,24 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: promstatusproxy
+  namespace: navdig
+  labels:
+    team: navdig
+spec:
+  image: {{ image }}
+  port: 8080
+  ingresses:
+    - https://prom-status-proxy.nav.no
+  azure:
+    application:
+      enabled: true
+
+  accessPolicy:
+    outbound:
+      rules:
+        - application: portalserver
+          namespace: navdig
+          cluster: prod-gcp
+
+
