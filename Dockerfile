@@ -1,4 +1,4 @@
-FROM maven:3.6.3-openjdk-11 as maven
+FROM maven:3.8.3-openjdk-17 as maven
 
 
 COPY pom.xml pom.xml
