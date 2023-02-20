@@ -9,7 +9,7 @@ spec:
     image: {{ image }}
     port: 8080
     ingresses:
-        - https://prom-status-proxy.dev.nav.no
+        - https://promstatusproxy.dev.nav.no
     azure:
         application:
             enabled: true
