@@ -23,6 +23,6 @@ EXPOSE 8080
 #RUN dir #Added
 
 
-COPY --from=maven target/StatusPrometheusProxy-0.0.1-SNAPSHOT.jar ./prom-status-proxy.jar
+COPY --from=maven target/prom-status-proxy-0.0.1-SNAPSHOT.jar ./prom-status-proxy.jar
 
 CMD ["java", "-jar", "./prom-status-proxy.jar"]
