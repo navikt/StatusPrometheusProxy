@@ -11,7 +11,7 @@ RUN mvn dependency:go-offline -B
 
 RUN mvn package
 
-FROM openjdk:11
+FROM openjdk:17
 
 #RUN dir #Added
 
