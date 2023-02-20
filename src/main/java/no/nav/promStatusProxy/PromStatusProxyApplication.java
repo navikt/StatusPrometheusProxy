@@ -1,13 +1,13 @@
-package no.nav.StatusPrometheusProxy;
+package no.nav.promStatusProxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StatusPrometheusProxyApplication {
+public class PromStatusProxyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StatusPrometheusProxyApplication.class, args);
+		SpringApplication.run(PromStatusProxyApplication.class, args);
 	}
 
 }

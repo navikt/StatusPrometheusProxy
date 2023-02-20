@@ -1,10 +1,10 @@
-package no.nav.StatusPrometheusProxy;
+package no.nav.promStatusProxy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StatusPrometheusProxyApplicationTests {
+class PromStatusProxyApplicationTests {
 
 	@Test
 	void contextLoads() {

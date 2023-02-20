@@ -1,4 +1,4 @@
-package no.nav.StatusPrometheusProxy.util;
+package no.nav.promStatusProxy.util;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,13 +12,6 @@ import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.token.AccessToken;
-import com.nimbusds.oauth2.sdk.token.RefreshToken;
-
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class OauthUtil {
     // Construct the client credentials grant
