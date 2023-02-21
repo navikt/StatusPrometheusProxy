@@ -15,20 +15,20 @@ import com.nimbusds.oauth2.sdk.token.AccessToken;
 
 public class OauthUtil {
     // Construct the client credentials grant
-    private String CLIENT_SECRET = System.getenv("AZURE_APP_CLIENT_SECRET");
-    private String CLIENT_ID = System.getenv("AZURE_APP_CLIENT_ID");
-    private String TENANT = System.getenv("TENANT");
-    private String ENV = System.getenv("ENV");
-    private ClientID clientID = new ClientID(CLIENT_ID);
-    private Secret clientSecret = new Secret(CLIENT_SECRET);
-    private ClientAuthentication clientAuth = new ClientSecretBasic(clientID, clientSecret);
-    private Scope scope = new Scope("api://"+ENV+"-gcp.navdig.portalserver/.default");
+    private static String CLIENT_SECRET = System.getenv("AZURE_APP_CLIENT_SECRET");
+    private static String CLIENT_ID = System.getenv("AZURE_APP_CLIENT_ID");
+    private static String TENANT = System.getenv("TENANT");
+    private static String ENV = System.getenv("ENV");
+    private static ClientID clientID = new ClientID(CLIENT_ID);
+    private static Secret clientSecret = new Secret(CLIENT_SECRET);
+    private static ClientAuthentication clientAuth = new ClientSecretBasic(clientID, clientSecret);
+    private static Scope scope = new Scope("api://"+ENV+"-gcp.navdig.portalserver/.default");
 
 
 
 
 
-    public AccessToken getAccessTokenForPortal() throws URISyntaxException, IOException, ParseException {
+    public static AccessToken getAccessTokenForPortal() throws URISyntaxException, IOException, ParseException {
 
         AuthorizationGrant clientGrant = new ClientCredentialsGrant();
         // The token endpoint

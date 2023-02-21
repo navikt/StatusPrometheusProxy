@@ -8,6 +8,11 @@ metadata:
 spec:
     image: {{ image }}
     port: 8080
+    env:
+        - name: TENANT
+          value: trygdeetaten.no
+        - name: ENV
+          value: dev
     ingresses:
         - https://promstatusproxy.dev.nav.no
     azure:
