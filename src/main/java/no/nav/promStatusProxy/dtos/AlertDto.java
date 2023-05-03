@@ -126,5 +126,20 @@ public class AlertDto {
         this.groupKey = groupKey;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "AlertDto{" +
+                "receiver='" + receiver + '\'' +
+                ", status=" + status +
+                ", alerts=" + alerts +
+                ", groupLabels=" + groupLabels +
+                ", commonLabels=" + commonLabels +
+                ", commonAnnotations=" + commonAnnotations +
+                ", externalURL='" + externalURL + '\'' +
+                ", version='" + version + '\'' +
+                ", groupKey='" + groupKey + '\'' +
+                '}';
+    }
 }
 
