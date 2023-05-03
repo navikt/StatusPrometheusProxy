@@ -28,11 +28,9 @@ public class Controller {
         return "no alert";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(AlertDto dto){
         this.dto = dto;
         System.out.println("Recived alert: " + dto);
-
-
     }
 }
