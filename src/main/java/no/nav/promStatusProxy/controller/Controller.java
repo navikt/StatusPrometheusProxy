@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    AlertDto dto;
+    Object dto;
 
     @GetMapping("/accessToken")
     public String testToken(){
@@ -30,7 +30,7 @@ public class Controller {
     }
 
     @PostMapping("/")
-    public void postAlert(AlertDto dto){
+    public void postAlert(Object dto){
         this.dto = dto;
         System.out.println("Recived alert: " + dto);
 
