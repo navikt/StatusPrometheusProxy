@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
+    AlertDto dto;
 
-    @GetMapping("/")
+    @GetMapping("/accessToken")
     public String testToken(){
         try {
             return OauthUtil.getAccessTokenForPortal().toJSONString();
@@ -19,8 +20,18 @@ public class Controller {
         }
     }
 
+    @GetMapping("/dto")
+    public String testDto(){
+        if(dto != null){
+            return dto.toString();
+
+        }
+        return "no alert";
+    }
+
     @PostMapping("/")
     public void postAlert(AlertDto dto){
+        this.dto = dto;
         System.out.println("Recived alert: " + dto);
 
 
