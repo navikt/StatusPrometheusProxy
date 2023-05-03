@@ -1,7 +1,9 @@
 package no.nav.promStatusProxy.controller;
 
+import no.nav.promStatusProxy.dtos.AlertDto;
 import no.nav.promStatusProxy.util.OauthUtil;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,5 +17,12 @@ public class Controller {
         catch (Exception e){
             return e.getStackTrace().toString();
         }
+    }
+
+    @PostMapping("/")
+    public void postAlert(AlertDto dto){
+        System.out.println("Recived alert: " + dto);
+
+
     }
 }
