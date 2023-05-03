@@ -3,9 +3,7 @@ package no.nav.promStatusProxy.controller;
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import no.nav.promStatusProxy.dtos.AlertDto;
 import no.nav.promStatusProxy.util.OauthUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -30,7 +28,7 @@ public class Controller {
         return "no alert";
     }
 
-    @PostMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(AlertDto dto){
         this.dto = dto;
         System.out.println("Recived alert: " + dto);
