@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Controller {
     AlertDto dto;
+    JsonObject jsonObject;
 
     @GetMapping("/accessToken")
     public String testToken(){
@@ -29,8 +30,14 @@ public class Controller {
     }
 
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
-    public void postAlert(AlertDto dto){
-        this.dto = dto;
-        System.out.println("Recived alert: " + dto);
+    public void postAlert(AlertDto alertDto){
+        this.dto = alertDto;
+        System.out.println("Recived alert: " + alertDto);
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST, consumes = "application/json")
+    public void postJson(JsonObject jsonObject){
+        this.jsonObject = jsonObject;
+        System.out.println("Recived Json: " + jsonObject);
     }
 }
