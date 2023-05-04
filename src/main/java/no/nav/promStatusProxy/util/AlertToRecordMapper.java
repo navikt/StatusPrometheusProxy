@@ -5,7 +5,7 @@ import no.nav.promStatusProxy.dtos.*;
 public class AlertToRecordMapper {
     private RecordDto generateServiceStatusFromAlert(AlertDto alertDto){
 
-        if(AlertStatusDto.RESOLVED.equals(alertDto.getStatus())){
+        if(AlertStatusDto.resolved.equals(alertDto.getStatus())){
             return new RecordDto()
                     .serviceId(alertDto.getCommonLabels().getAlertname())
                     .status(StatusDto.OK)

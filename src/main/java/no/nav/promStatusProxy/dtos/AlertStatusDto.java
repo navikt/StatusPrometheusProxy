@@ -9,8 +9,8 @@ import java.util.List;
  */
 public enum AlertStatusDto {
 
-    FIRING("firing"),
-    RESOLVED("resolved");
+    firing("firing"),
+    resolved("resolved");
 
     private String value;
 
