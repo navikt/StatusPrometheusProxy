@@ -8,7 +8,7 @@ public class AlertManagerNotificationDto {
     private String version;
     private String groupKey;
     private int truncatedAlerts;
-    private StatusDto status;
+    private AlertStatusDto status;
     private String receiver;
     private Map<String, String> groupLabels;
     private Map<String, String> commonLabels;
@@ -42,11 +42,11 @@ public class AlertManagerNotificationDto {
         this.truncatedAlerts = truncatedAlerts;
     }
 
-    public StatusDto getStatus() {
+    public AlertStatusDto getStatus() {
         return status;
     }
 
-    public void setStatus(StatusDto status) {
+    public void setStatus(AlertStatusDto status) {
         this.status = status;
     }
 
