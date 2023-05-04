@@ -2,13 +2,14 @@ package no.nav.promStatusProxy.controller;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import no.nav.promStatusProxy.dtos.AlertDto;
+import no.nav.promStatusProxy.dtos.AlertManagerNotificationDto;
 import no.nav.promStatusProxy.dtos.AlertStatusDto;
 import no.nav.promStatusProxy.util.OauthUtil;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
-    AlertDto dto;
+    AlertManagerNotificationDto dto;
 
     @GetMapping("/accessToken")
     public String testToken(){
@@ -30,7 +31,7 @@ public class Controller {
     }
 
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
-    public void postAlert(@RequestBody AlertDto alertDto){
+    public void postAlert(@RequestBody AlertManagerNotificationDto alertDto){
         this.dto = alertDto;
         System.out.println("Recived alert: " + alertDto);
     }
