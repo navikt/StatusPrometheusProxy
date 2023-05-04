@@ -164,6 +164,35 @@ public class AlertManagerNotificationDto {
         public void setFingerprint(String fingerprint) {
             this.fingerprint = fingerprint;
         }
+
+        @Override
+        public String toString() {
+            return "Alert{" +
+                    "status='" + status + '\'' +
+                    ", labels=" + labels +
+                    ", annotations=" + annotations +
+                    ", startsAt='" + startsAt + '\'' +
+                    ", endsAt='" + endsAt + '\'' +
+                    ", generatorURL='" + generatorURL + '\'' +
+                    ", fingerprint='" + fingerprint + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "AlertManagerNotificationDto{" +
+                "version='" + version + '\'' +
+                ", groupKey='" + groupKey + '\'' +
+                ", truncatedAlerts=" + truncatedAlerts +
+                ", status=" + status +
+                ", receiver='" + receiver + '\'' +
+                ", groupLabels=" + groupLabels +
+                ", commonLabels=" + commonLabels +
+                ", commonAnnotations=" + commonAnnotations +
+                ", externalURL='" + externalURL + '\'' +
+                ", alerts=" + alerts +
+                '}';
     }
 }
 
