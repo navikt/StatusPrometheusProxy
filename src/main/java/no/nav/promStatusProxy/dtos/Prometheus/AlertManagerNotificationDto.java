@@ -1,5 +1,6 @@
 package no.nav.promStatusProxy.dtos.Prometheus;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -103,8 +104,8 @@ public class AlertManagerNotificationDto {
         private String status;
         private Map<String, String> labels;
         private Map<String, String> annotations;
-        private String startsAt;
-        private String endsAt;
+        private LocalDateTime startsAt;
+        private LocalDateTime endsAt;
         private String generatorURL;
         private String fingerprint;
 
@@ -133,19 +134,19 @@ public class AlertManagerNotificationDto {
             this.annotations = annotations;
         }
 
-        public String getStartsAt() {
+        public LocalDateTime getStartsAt() {
             return startsAt;
         }
 
-        public void setStartsAt(String startsAt) {
+        public void setStartsAt(LocalDateTime startsAt) {
             this.startsAt = startsAt;
         }
 
-        public String getEndsAt() {
+        public LocalDateTime getEndsAt() {
             return endsAt;
         }
 
-        public void setEndsAt(String endsAt) {
+        public void setEndsAt(LocalDateTime endsAt) {
             this.endsAt = endsAt;
         }
 

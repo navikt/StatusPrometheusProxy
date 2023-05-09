@@ -7,6 +7,8 @@ import no.nav.promStatusProxy.util.AlertToRecordMapper;
 import no.nav.promStatusProxy.util.OauthUtil;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+
 @RestController
 public class Controller {
     AlertManagerNotificationDto dto;
@@ -43,6 +45,7 @@ public class Controller {
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(@RequestBody AlertManagerNotificationDto alertDto){
         this.dto = alertDto;
+       // alertDto.getAlerts().sort(Comparator.comparing(AlertManagerNotificationDto.Alert::getStartsAt));
         try{
             RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alertDto);
             recordDto = recordDto1;
