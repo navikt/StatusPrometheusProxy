@@ -14,8 +14,6 @@ import java.util.UUID;
 
 
 public class RecordDto {
-    private UUID id = null;
-
     private OffsetDateTime timestamp = null;
 
     private UUID serviceId = null;
@@ -63,22 +61,6 @@ public class RecordDto {
     }
 
 
-    /**
-     * Get id
-     * @return id
-     */
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public RecordDto id(UUID id) {
-        this.id = id;
-        return this;
-    }
 
     /**
      * Get timestamp
@@ -178,8 +160,7 @@ public class RecordDto {
             return false;
         }
         RecordDto record = (RecordDto) o;
-        return Objects.equals(this.getId(), record.getId()) &&
-                Objects.equals(this.getTimestamp(), record.getTimestamp()) &&
+        return  Objects.equals(this.getTimestamp(), record.getTimestamp()) &&
                 Objects.equals(this.getServiceId(), record.getServiceId()) &&
                 Objects.equals(this.getStatus(), record.getStatus()) &&
                 Objects.equals(this.getDescription(), record.getDescription()) &&
@@ -188,14 +169,13 @@ public class RecordDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink());
+        return Objects.hash(getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink());
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class RecordDto {\n");
-        sb.append("    id: ").append(toIndentedString(getId())).append("\n");
         sb.append("    timestamp: ").append(toIndentedString(getTimestamp())).append("\n");
         sb.append("    serviceId: ").append(toIndentedString(getServiceId())).append("\n");
         sb.append("    status: ").append(toIndentedString(getStatus())).append("\n");

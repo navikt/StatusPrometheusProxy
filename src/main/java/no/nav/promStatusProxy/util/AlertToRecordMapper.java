@@ -6,6 +6,8 @@ import no.nav.promStatusProxy.dtos.Prometheus.AlertManagerNotificationDto;
 import no.nav.promStatusProxy.dtos.Prometheus.AlertSeverityDto;
 import no.nav.promStatusProxy.dtos.Prometheus.AlertStatusDto;
 
+import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 public class AlertToRecordMapper {
@@ -45,6 +47,9 @@ public class AlertToRecordMapper {
     public  static  RecordDto mapToRecordDto(AlertManagerNotificationDto amnDto){
             RecordDto recordDto = new RecordDto();
             recordDto.serviceId(UUID.fromString(amnDto.getCommonLabels().get("serviceId")));
+            recordDto.status(StatusDto.fromValue(amnDto.getCommonLabels().get("navstatus")));
+            recordDto.timestamp(OffsetDateTime.now());
+            recordDto.description(amnDto.getCommonAnnotations().get("description"));
             return recordDto;
     }
 }
