@@ -43,8 +43,14 @@ public class Controller {
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(@RequestBody AlertManagerNotificationDto alertDto){
         this.dto = alertDto;
-        RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alertDto);
-        recordDto = recordDto1;
+        try{
+            RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alertDto);
+            recordDto = recordDto1;
+
+        }
+        catch (Exception e){
+            recordDto = null;
+        }
         System.out.println("Recived alert: " + alertDto);
     }
 
