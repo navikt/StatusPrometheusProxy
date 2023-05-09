@@ -18,7 +18,7 @@ public class AlertToRecordMapper {
             RecordDto recordDto = new RecordDto();
             recordDto.serviceId(UUID.fromString(alertDto.getLabels().get("serviceId")));
             recordDto.status(getStatus(alertDto));
-            recordDto.setLogLink(alertDto.getLabels().get("logglink"));
+            recordDto.setLogLink(alertDto.getLabels().get("loglink"));
             recordDto.timestamp(OffsetDateTime.now());
             recordDto.description(alertDto.getAnnotations().get("description"));
             return recordDto;
