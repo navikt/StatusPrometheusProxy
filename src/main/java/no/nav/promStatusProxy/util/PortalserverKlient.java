@@ -29,6 +29,7 @@ public class PortalserverKlient {
                 .registerTypeAdapter(RecordDto.class,new RecordDto.RecordDtoAdapter())
                 .create();
         String jsonInputString = gson.toJson(List.of(recordDto));
+        System.out.println(jsonInputString);
         try(OutputStream os = con.getOutputStream()) {
 
             byte[] input = jsonInputString.getBytes("utf-8");
