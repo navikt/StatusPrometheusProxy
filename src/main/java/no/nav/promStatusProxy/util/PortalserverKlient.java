@@ -30,6 +30,7 @@ public class PortalserverKlient {
                 .create();
         String jsonInputString = gson.toJson(List.of(recordDto));
         System.out.println(jsonInputString);
+        System.out.println("HEi");
         try(OutputStream os = con.getOutputStream()) {
 
             byte[] input = jsonInputString.getBytes("utf-8");
