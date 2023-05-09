@@ -209,6 +209,7 @@ public class RecordDto {
             writer.name("description");
             writer.value(recordDto.getDescription());
             writer.name("logLink");
+            writer.value(recordDto.getLogLink());
             writer.endObject();
         }
 
