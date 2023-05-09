@@ -18,8 +18,10 @@ public class PortalserverKlient {
 
 
     public static void postStatus(RecordDto recordDto) throws Exception {
+        System.out.println("post status1");
         URL url = new URL (portalApiUrl + "/rest/UpdateRecords");
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
+        System.out.println("post status2");
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty ("Authorization",  OauthUtil.getAccessTokenForPortal());
@@ -28,6 +30,7 @@ public class PortalserverKlient {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(RecordDto.class,new RecordDto.RecordDtoAdapter())
                 .create();
+        System.out.println("post status3");
         String jsonInputString = gson.toJson(List.of(recordDto));
         System.out.println(jsonInputString);
         System.out.println("HEi");
