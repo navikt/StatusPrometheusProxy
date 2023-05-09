@@ -49,6 +49,7 @@ public class AlertToRecordMapper {
             RecordDto recordDto = new RecordDto();
             recordDto.serviceId(UUID.fromString(amnDto.getCommonLabels().get("serviceId")));
             recordDto.status(StatusDto.fromValue(amnDto.getCommonLabels().get("navstatus").toUpperCase(Locale.ROOT)));
+            recordDto.setLogLink(amnDto.getCommonLabels().get("logglink"));
             recordDto.timestamp(OffsetDateTime.now());
             recordDto.description(amnDto.getCommonAnnotations().get("description"));
             return recordDto;
