@@ -72,6 +72,7 @@ public class Controller {
 
         }
         catch (Exception e){
+            System.out.println(e.toString());
             recordDto = null;
         }
         System.out.println("Recived alert: " + alertDto);
