@@ -60,7 +60,7 @@ public class Controller {
         Optional<AlertDto> alert = alertDto
                 .getAlerts()
                 .stream()
-                .min(Comparator.comparing(AlertDto::getStartsAt));
+                .max(Comparator.comparing(AlertDto::getStartsAt));
         this.alertDto = alert.get();
 
 
