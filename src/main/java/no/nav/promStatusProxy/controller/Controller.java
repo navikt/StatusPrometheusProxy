@@ -1,5 +1,6 @@
 package no.nav.promStatusProxy.controller;
 
+import no.nav.promStatusProxy.dtos.Prometheus.AlertDto;
 import no.nav.promStatusProxy.dtos.Prometheus.AlertManagerNotificationDto;
 import no.nav.promStatusProxy.dtos.Prometheus.AlertStatusDto;
 import no.nav.promStatusProxy.dtos.RecordDto;
@@ -8,10 +9,12 @@ import no.nav.promStatusProxy.util.OauthUtil;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
+import java.util.Optional;
 
 @RestController
 public class Controller {
     AlertManagerNotificationDto dto;
+    AlertDto alertDto;
     RecordDto recordDto;
 
     @GetMapping("/accessToken")
@@ -33,6 +36,15 @@ public class Controller {
         return "no alert";
     }
 
+    @GetMapping("/alert")
+    public String alertDto(){
+        if(dto != null){
+            return alertDto.toString();
+
+        }
+        return "no alert";
+    }
+
     @GetMapping("/record")
     public String record(){
         if(recordDto != null){
@@ -45,9 +57,15 @@ public class Controller {
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(@RequestBody AlertManagerNotificationDto alertDto){
         this.dto = alertDto;
-       // alertDto.getAlerts().sort(Comparator.comparing(AlertManagerNotificationDto.Alert::getStartsAt));
+        Optional<AlertDto> alert = alertDto
+                .getAlerts()
+                .stream()
+                .min(Comparator.comparing(AlertDto::getStartsAt));
+        this.alertDto = alert.get();
+
+
         try{
-            RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alertDto);
+            RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alert.get());
             recordDto = recordDto1;
 
         }

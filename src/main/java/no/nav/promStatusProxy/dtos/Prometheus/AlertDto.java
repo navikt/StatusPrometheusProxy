@@ -1,140 +1,87 @@
 package no.nav.promStatusProxy.dtos.Prometheus;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
-
-/**
- * AlertDto
- */
 public class AlertDto {
+    private String status;
+    private Map<String, String> labels;
+    private Map<String, String> annotations;
+    private LocalDateTime startsAt;
+    private LocalDateTime endsAt;
+    private String generatorURL;
+    private String fingerprint;
 
-    private String receiver = null;
-
-    private AlertStatusDto status = null;
-
-    private List<Object> alerts = null;
-
-    private Object groupLabels = null;
-
-    private CommonLabelsDto commonLabels = null;
-
-    private CommonAnnotationsDto commonAnnotations = null;
-
-    private String externalURL = null;
-
-    private String version = null;
-
-    private String groupKey = null;
-
-    public AlertDto() {
-    }
-
-    public AlertDto(String receiver, AlertStatusDto status, List<Object> alerts, Object groupLabels, CommonLabelsDto commonLabels, CommonAnnotationsDto commonAnnotations, String externalURL, String version, String groupKey) {
-        this.receiver = receiver;
-        this.status = status;
-        this.alerts = alerts;
-        this.groupLabels = groupLabels;
-        this.commonLabels = commonLabels;
-        this.commonAnnotations = commonAnnotations;
-        this.externalURL = externalURL;
-        this.version = version;
-        this.groupKey = groupKey;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public AlertDto setReceiver(String receiver) {
-        this.receiver = receiver;
-        return this;
-    }
-
-    public AlertStatusDto getStatus() {
+    // getters and setters
+    public String getStatus() {
         return status;
     }
 
-    public AlertDto setStatus(AlertStatusDto status) {
+    public void setStatus(String status) {
         this.status = status;
-        return this;
     }
 
-    public List<Object> getAlerts() {
-        return alerts;
+    public Map<String, String> getLabels() {
+        return labels;
     }
 
-    public AlertDto setAlerts(List<Object> alerts) {
-        this.alerts = alerts;
-        return this;
+    public void setLabels(Map<String, String> labels) {
+        this.labels = labels;
     }
 
-    public Object getGroupLabels() {
-        return groupLabels;
+    public Map<String, String> getAnnotations() {
+        return annotations;
     }
 
-    public AlertDto setGroupLabels(Object groupLabels) {
-        this.groupLabels = groupLabels;
-        return this;
+    public void setAnnotations(Map<String, String> annotations) {
+        this.annotations = annotations;
     }
 
-    public CommonLabelsDto getCommonLabels() {
-        return commonLabels;
+    public LocalDateTime getStartsAt() {
+        return startsAt;
     }
 
-    public AlertDto setCommonLabels(CommonLabelsDto commonLabels) {
-        this.commonLabels = commonLabels;
-        return this;
+    public void setStartsAt(LocalDateTime startsAt) {
+        this.startsAt = startsAt;
     }
 
-    public CommonAnnotationsDto getCommonAnnotations() {
-        return commonAnnotations;
+    public LocalDateTime getEndsAt() {
+        return endsAt;
     }
 
-    public AlertDto setCommonAnnotations(CommonAnnotationsDto commonAnnotations) {
-        this.commonAnnotations = commonAnnotations;
-        return this;
+    public void setEndsAt(LocalDateTime endsAt) {
+        this.endsAt = endsAt;
     }
 
-    public String getExternalURL() {
-        return externalURL;
+    public String getGeneratorURL() {
+        return generatorURL;
     }
 
-    public AlertDto setExternalURL(String externalURL) {
-        this.externalURL = externalURL;
-        return this;
+    public void setGeneratorURL(String generatorURL) {
+        this.generatorURL = generatorURL;
     }
 
-    public String getVersion() {
-        return version;
+    public String getFingerprint() {
+        return fingerprint;
     }
 
-    public AlertDto setVersion(String version) {
-        this.version = version;
-        return this;
-    }
-
-    public String getGroupKey() {
-        return groupKey;
-    }
-
-    public AlertDto setGroupKey(String groupKey) {
-        this.groupKey = groupKey;
-        return this;
+    public void setFingerprint(String fingerprint) {
+        this.fingerprint = fingerprint;
     }
 
     @Override
     public String toString() {
-        return "AlertDto{" +
-                "receiver='" + receiver + '\'' +
-                ", status=" + status +
-                ", alerts=" + alerts +
-                ", groupLabels=" + groupLabels +
-                ", commonLabels=" + commonLabels +
-                ", commonAnnotations=" + commonAnnotations +
-                ", externalURL='" + externalURL + '\'' +
-                ", version='" + version + '\'' +
-                ", groupKey='" + groupKey + '\'' +
+        return "Alert{" +
+                "status='" + status + '\'' +
+                ", labels=" + labels +
+                ", annotations=" + annotations +
+                ", startsAt='" + startsAt + '\'' +
+                ", endsAt='" + endsAt + '\'' +
+                ", generatorURL='" + generatorURL + '\'' +
+                ", fingerprint='" + fingerprint + '\'' +
                 '}';
     }
 }
+
 
