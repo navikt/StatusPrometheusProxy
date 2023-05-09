@@ -16,6 +16,8 @@ spec:
           value: nav.no
         - name: ENV
           value: dev
+        - name: portalserver_path
+          value: "http://portalserver"
     ingresses:
         - https://promstatusproxy.intern.dev.nav.no
     azure:

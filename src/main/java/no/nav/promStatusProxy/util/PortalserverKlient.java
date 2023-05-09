@@ -10,23 +10,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public class PortalserverKlient {
 
     static String portalApiUrl = System.getenv("portalserver_path");
-
-    private static String readBody(HttpURLConnection con) throws IOException {
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-        in.close();
-        return content.toString();
-    }
 
 
     public static void postStatus(RecordDto recordDto) throws Exception {
@@ -40,7 +28,7 @@ public class PortalserverKlient {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(RecordDto.class,new RecordDto.RecordDtoAdapter())
                 .create();
-        String jsonInputString = gson.toJson(recordDto);
+        String jsonInputString = gson.toJson(List.of(recordDto));
         try(OutputStream os = con.getOutputStream()) {
 
             byte[] input = jsonInputString.getBytes("utf-8");

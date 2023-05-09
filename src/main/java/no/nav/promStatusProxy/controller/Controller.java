@@ -6,6 +6,7 @@ import no.nav.promStatusProxy.dtos.Prometheus.AlertStatusDto;
 import no.nav.promStatusProxy.dtos.RecordDto;
 import no.nav.promStatusProxy.util.AlertToRecordMapper;
 import no.nav.promStatusProxy.util.OauthUtil;
+import no.nav.promStatusProxy.util.PortalserverKlient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
@@ -67,6 +68,7 @@ public class Controller {
         try{
             RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alert.get());
             recordDto = recordDto1;
+            PortalserverKlient.postStatus(recordDto1);
 
         }
         catch (Exception e){
