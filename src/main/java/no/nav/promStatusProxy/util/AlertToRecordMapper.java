@@ -1,6 +1,12 @@
 package no.nav.promStatusProxy.util;
 
 import no.nav.promStatusProxy.dtos.*;
+import no.nav.promStatusProxy.dtos.Prometheus.AlertDto;
+import no.nav.promStatusProxy.dtos.Prometheus.AlertManagerNotificationDto;
+import no.nav.promStatusProxy.dtos.Prometheus.AlertSeverityDto;
+import no.nav.promStatusProxy.dtos.Prometheus.AlertStatusDto;
+
+import java.util.UUID;
 
 public class AlertToRecordMapper {
     private RecordDto generateServiceStatusFromAlert(AlertDto alertDto){
@@ -34,5 +40,11 @@ public class AlertToRecordMapper {
         }
         else throw new IllegalArgumentException("Malformed alert received");
 
+    }
+
+    public  static  RecordDto mapToRecordDto(AlertManagerNotificationDto amnDto){
+            RecordDto recordDto = new RecordDto();
+            recordDto.serviceId(UUID.fromString(amnDto.getCommonLabels().get("serviceId")));
+            return recordDto;
     }
 }

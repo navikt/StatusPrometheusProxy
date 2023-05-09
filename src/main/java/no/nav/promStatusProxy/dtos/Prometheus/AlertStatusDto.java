@@ -1,4 +1,4 @@
-package no.nav.promStatusProxy.dtos;
+package no.nav.promStatusProxy.dtos.Prometheus;
 
 import java.util.Arrays;
 import java.util.List;

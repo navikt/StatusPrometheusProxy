@@ -1,27 +1,17 @@
 package no.nav.promStatusProxy.dtos;
 
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.io.File;
-import java.net.URI;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
 
 public class RecordDto {
     private UUID id = null;
@@ -36,7 +26,6 @@ public class RecordDto {
 
     private String logLink = null;
 
-    private Integer responseTime = null;
 
     public static String[] readOnlyFields() {
         return new String[] {
@@ -177,22 +166,8 @@ public class RecordDto {
         return this;
     }
 
-    /**
-     * Get responseTime
-     * @return responseTime
-     */
-    public Integer getResponseTime() {
-        return responseTime;
-    }
 
-    public void setResponseTime(Integer responseTime) {
-        this.responseTime = responseTime;
-    }
 
-    public RecordDto responseTime(Integer responseTime) {
-        this.responseTime = responseTime;
-        return this;
-    }
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -208,13 +183,12 @@ public class RecordDto {
                 Objects.equals(this.getServiceId(), record.getServiceId()) &&
                 Objects.equals(this.getStatus(), record.getStatus()) &&
                 Objects.equals(this.getDescription(), record.getDescription()) &&
-                Objects.equals(this.getLogLink(), record.getLogLink()) &&
-                Objects.equals(this.getResponseTime(), record.getResponseTime());
+                Objects.equals(this.getLogLink(), record.getLogLink());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink(), getResponseTime());
+        return Objects.hash(getId(), getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink());
     }
 
     @Override
@@ -227,7 +201,6 @@ public class RecordDto {
         sb.append("    status: ").append(toIndentedString(getStatus())).append("\n");
         sb.append("    description: ").append(toIndentedString(getDescription())).append("\n");
         sb.append("    logLink: ").append(toIndentedString(getLogLink())).append("\n");
-        sb.append("    responseTime: ").append(toIndentedString(getResponseTime())).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -241,6 +214,29 @@ public class RecordDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static class RecordDtoAdapter extends TypeAdapter<RecordDto> {
+        @Override
+        public void write(JsonWriter writer, RecordDto recordDto) throws IOException {
+            writer.beginObject();
+            writer.name("serviceId");
+            writer.value(recordDto.getServiceId().toString());
+            writer.name("timestamp");
+            writer.value(recordDto.getTimestamp().truncatedTo(ChronoUnit.SECONDS).toString());
+            writer.name("status");
+            writer.value(recordDto.getStatus().getValue());
+            writer.name("description");
+            writer.value(recordDto.getDescription());
+            writer.name("logLink");
+            writer.endObject();
+        }
+
+        @Override
+        public RecordDto read(JsonReader in) throws IOException {
+            return null;
+        }
+
     }
 }
 
