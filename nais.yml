@@ -19,7 +19,7 @@ spec:
         - name: ENV
           value: prod
     ingresses:
-        - https://alertstatusproxy.intern.nav.no
+        - https://promstatusproxy.intern.nav.no
     azure:
         application:
             tenant: nav.no
