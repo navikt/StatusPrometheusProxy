@@ -8,12 +8,14 @@ metadata:
 spec:
   image: {{ image }}
   port: 8080
+  env:
+    - name: portalserver_path
+      value: "http://portalserver"
   ingresses:
-    - https://promstatusproxy.nav.no
+    - https://promstatusproxy.intern.nav.no
   azure:
     application:
       enabled: true
-
   accessPolicy:
     outbound:
       rules:
