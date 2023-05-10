@@ -21,7 +21,6 @@ spec:
     application:
       tenant: nav.no
       enabled: true
-
   accessPolicy:
     outbound:
       rules:
