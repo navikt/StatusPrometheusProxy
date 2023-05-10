@@ -19,12 +19,10 @@ spec:
     - https://promstatusproxy.intern.nav.no
   azure:
     application:
+      tenant: nav.no
       enabled: true
+
   accessPolicy:
     outbound:
       rules:
         - application: portalserver
-          namespace: navdig
-          cluster: prod-gcp
-
-
