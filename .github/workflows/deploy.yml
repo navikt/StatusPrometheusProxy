@@ -3,10 +3,11 @@ name: Build, push, and deploy
 on: [push]
 
 env:
-  docker_image: ghcr.io/navikt/${{ github.repository }}:${{ github.sha }}
+  docker_image: ghcr.io/navikt/prom-status-proxy:${{ github.sha }}
 
 jobs:
-  build-and-run-tests:
+
+  build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
     steps:
@@ -19,10 +20,9 @@ jobs:
           docker build --tag ${docker_image} .
           docker push ${docker_image}
 
-
   deploy-test:
-    name: Deploy application to test env
-    needs: build-and-run-tests
+    name: Deploy application to test
+    needs: build
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
           VAR: image=${{ env.docker_image }}
   deploy-prod:
     name: Deploy application to prod
-    needs: build-and-run-tests
+    needs: build
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -46,3 +46,4 @@ jobs:
           CLUSTER: prod-gcp
           RESOURCE: nais.yml
           VAR: image=${{ env.docker_image }}
+
