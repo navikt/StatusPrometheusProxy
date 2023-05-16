@@ -16,11 +16,10 @@ public class AlertToRecordMapper {
     public  static  RecordDto mapToRecordDto(AlertDto alertDto){
 
             RecordDto recordDto = new RecordDto();
-            recordDto.serviceId(UUID.fromString(alertDto.getLabels().get("serviceId")));
+            recordDto.serviceId(UUID.fromString(alertDto.getLabels().get("nav_service_id")));
             recordDto.status(getStatus(alertDto));
-            recordDto.setLogLink(alertDto.getLabels().get("loglink"));
             recordDto.timestamp(OffsetDateTime.now());
-            recordDto.description(alertDto.getAnnotations().get("description"));
+            recordDto.description(alertDto.getAnnotations().get("nav_description"));
             return recordDto;
     }
     private static StatusDto getStatus(AlertDto alertDto){
@@ -28,7 +27,7 @@ public class AlertToRecordMapper {
             return StatusDto.OK;
         }
         else {
-            return StatusDto.fromValue(alertDto.getLabels().get("navstatus").toUpperCase(Locale.ROOT));
+            return StatusDto.fromValue(alertDto.getLabels().get("nav_status").toUpperCase(Locale.ROOT));
         }
     }
 }

@@ -18,15 +18,6 @@ public class Controller {
     AlertDto alertDto;
     RecordDto recordDto;
 
-//    @GetMapping("/accessToken")
-//    public String testToken(){
-//        try {
-//            return OauthUtil.getAccessTokenForPortal();
-//        }
-//        catch (Exception e){
-//            return e.getStackTrace().toString();
-//        }
-//    }
 
     @GetMapping("/dto")
     public String testDto(){
