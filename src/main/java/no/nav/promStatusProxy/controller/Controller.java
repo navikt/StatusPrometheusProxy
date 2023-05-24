@@ -14,64 +14,28 @@ import java.util.Optional;
 
 @RestController
 public class Controller {
-    AlertManagerNotificationDto dto;
-    AlertDto alertDto;
-    RecordDto recordDto;
 
 
-    @GetMapping("/dto")
-    public String testDto(){
-        if(dto != null){
-            return dto.toString();
-
-        }
-        return "no alert";
-    }
-
-    @GetMapping("/alert")
-    public String alertDto(){
-        if(dto != null){
-            return alertDto.toString();
-
-        }
-        return "no alert";
-    }
-
-    @GetMapping("/record")
-    public String record(){
-        if(recordDto != null){
-            return recordDto.toString();
-
-        }
-        return "no record";
-    }
 
     @RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = "application/json")
     public void postAlert(@RequestBody AlertManagerNotificationDto alertDto){
-        this.dto = alertDto;
+
         Optional<AlertDto> alert = alertDto
                 .getAlerts()
                 .stream()
                 .max(Comparator.comparing(AlertDto::getStartsAt));
-        this.alertDto = alert.get();
+
 
 
         try{
             RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alert.get());
-            recordDto = recordDto1;
             PortalserverKlient.postStatus(recordDto1);
 
         }
         catch (Exception e){
-            System.out.println(e.toString());
-            recordDto = null;
+            System.out.println(e);
         }
         System.out.println("Recived alert: " + alertDto);
     }
 
-
-    @RequestMapping(value = "/value", method = RequestMethod.POST, consumes = "application/json")
-    public void postJson(AlertStatusDto value){
-        System.out.println("Recived Json: " + value);
-    }
 }
