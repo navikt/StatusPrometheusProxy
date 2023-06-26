@@ -38,4 +38,10 @@ public class Controller {
         System.out.println("Recived alert: " + alertDto);
     }
 
+    @GetMapping("/isAlive")
+    @ResponseBody
+    public String isAlive() {
+        return "Status: Ok";
+    }
+
 }
