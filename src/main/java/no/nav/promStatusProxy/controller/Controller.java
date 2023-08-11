@@ -25,12 +25,9 @@ public class Controller {
                 .stream()
                 .max(Comparator.comparing(AlertDto::getStartsAt));
 
-
-
         try{
-            RecordDto recordDto1 = AlertToRecordMapper.mapToRecordDto(alert.get());
-            PortalserverKlient.postStatus(recordDto1);
-
+            RecordDto recordDto = AlertToRecordMapper.mapToRecordDto(alert.get());
+            PortalserverKlient.postStatus(recordDto);
         }
         catch (Exception e){
             System.out.println(e);

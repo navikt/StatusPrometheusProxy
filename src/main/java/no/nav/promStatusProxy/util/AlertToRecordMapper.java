@@ -20,6 +20,7 @@ public class AlertToRecordMapper {
             recordDto.status(getStatus(alertDto));
             recordDto.timestamp(OffsetDateTime.now());
             recordDto.description(alertDto.getAnnotations().get("nav_description"));
+            recordDto.setSource(RecordSourceDto.PROMETHEUS);
             return recordDto;
     }
     private static StatusDto getStatus(AlertDto alertDto){

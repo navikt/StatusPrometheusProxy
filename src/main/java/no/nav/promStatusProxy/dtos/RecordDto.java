@@ -14,59 +14,31 @@ import java.util.UUID;
 
 
 public class RecordDto {
-    private OffsetDateTime timestamp = null;
 
     private UUID serviceId = null;
 
+    private OffsetDateTime timestamp = null;
+
     private StatusDto status = null;
+
+    private RecordSourceDto source = null;
 
     private String description = null;
 
     private String logLink = null;
 
+    private Integer responseTime = null;
 
-    public static String[] readOnlyFields() {
-        return new String[] {
-        };
+
+    public RecordSourceDto getSource() {
+        return source;
     }
 
-    public static String[] writeOnlyFields() {
-        return new String[] {
-        };
+    public RecordDto setSource(RecordSourceDto source) {
+        this.source = source;
+        return this;
     }
 
-    public static String[] requiredFields() {
-        return new String[] {
-        };
-    }
-
-    public List<String> missingRequiredFields() {
-        List<String> result = new ArrayList<>();
-        return result;
-    }
-
-    public void readOnlyFieldsWithValue(List<String> result) {
-    }
-
-    private boolean isMissing(String s) {
-        return s == null || s.isEmpty();
-    }
-
-    private boolean isMissing(List<?> list) {
-        return list == null;
-    }
-
-    private boolean isMissing(Object s) {
-        return s == null;
-    }
-
-
-
-    /**
-     * Get timestamp
-     * example: 2017-07-21T17:30Z
-     * @return timestamp
-     */
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }
@@ -80,10 +52,6 @@ public class RecordDto {
         return this;
     }
 
-    /**
-     * Get serviceId
-     * @return serviceId
-     */
     public UUID getServiceId() {
         return serviceId;
     }
@@ -97,10 +65,6 @@ public class RecordDto {
         return this;
     }
 
-    /**
-     * Get status
-     * @return status
-     */
     public StatusDto getStatus() {
         return status;
     }
@@ -131,10 +95,7 @@ public class RecordDto {
         return this;
     }
 
-    /**
-     * Get logLink
-     * @return logLink
-     */
+
     public String getLogLink() {
         return logLink;
     }
@@ -149,10 +110,21 @@ public class RecordDto {
     }
 
 
+    public Integer getResponseTime() {
+        return responseTime;
+    }
 
+    public void setResponseTime(Integer responseTime) {
+        this.responseTime = responseTime;
+    }
+
+    public RecordDto responseTime(Integer responseTime) {
+        this.responseTime = responseTime;
+        return this;
+    }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -164,12 +136,13 @@ public class RecordDto {
                 Objects.equals(this.getServiceId(), record.getServiceId()) &&
                 Objects.equals(this.getStatus(), record.getStatus()) &&
                 Objects.equals(this.getDescription(), record.getDescription()) &&
-                Objects.equals(this.getLogLink(), record.getLogLink());
+                Objects.equals(this.getLogLink(), record.getLogLink()) &&
+                Objects.equals(this.getResponseTime(), record.getResponseTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink());
+        return Objects.hash(getTimestamp(), getServiceId(), getStatus(), getDescription(), getLogLink(), getResponseTime());
     }
 
     @Override
@@ -181,6 +154,7 @@ public class RecordDto {
         sb.append("    status: ").append(toIndentedString(getStatus())).append("\n");
         sb.append("    description: ").append(toIndentedString(getDescription())).append("\n");
         sb.append("    logLink: ").append(toIndentedString(getLogLink())).append("\n");
+        sb.append("    responseTime: ").append(toIndentedString(getResponseTime())).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -189,7 +163,7 @@ public class RecordDto {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
@@ -210,6 +184,10 @@ public class RecordDto {
             writer.value(recordDto.getDescription());
             writer.name("logLink");
             writer.value(recordDto.getLogLink());
+            writer.name("responseTime");
+            writer.value(recordDto.getResponseTime());
+            writer.name("source");
+            writer.value(RecordSourceDto.GCP_POLL.toString());
             writer.endObject();
         }
 
