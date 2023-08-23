@@ -187,7 +187,7 @@ public class RecordDto {
             writer.name("responseTime");
             writer.value(recordDto.getResponseTime());
             writer.name("source");
-            writer.value(RecordSourceDto.GCP_POLL.toString());
+            writer.value(recordDto.getSource().toString());
             writer.endObject();
         }
 
